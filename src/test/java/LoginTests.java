@@ -1,3 +1,4 @@
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -9,13 +10,13 @@ import pages.SidePanel;
 import static org.junit.Assert.assertEquals;
 
 public class LoginTests {
+
     private WebDriver driver;
     private ChromeOptions options;
     private SidePanel sidePanel;
     private CreateUserLoginPage createUserLoginPage;
 
     @Before
-
     public void setUp() {
         options = new ChromeOptions();
         options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
@@ -24,8 +25,6 @@ public class LoginTests {
         driver.get("http://localhost:3000/");
         sidePanel = new SidePanel(driver);
         createUserLoginPage = new CreateUserLoginPage(driver);
-
-
     }
 
     @Test
@@ -40,7 +39,6 @@ public class LoginTests {
     }
 
     @Test
-
     public void invalidPassword() throws InterruptedException {
         sidePanel.clickLoginButton();
         createUserLoginPage.insertEmail("user10@gmail.com");
@@ -51,9 +49,7 @@ public class LoginTests {
         assertEquals("Invalid email or password entered.", createUserLoginPage.getErrorMessage2());
     }
 
-
     @Test
-
     public void emptyEmailField() throws InterruptedException {
 
         sidePanel.clickLoginButton();
@@ -65,7 +61,6 @@ public class LoginTests {
     }
 
     @Test
-
     public void emptyPasswordField() throws InterruptedException {
         sidePanel.clickLoginButton();
         createUserLoginPage.insertEmail("user1310@hotmail.com");
@@ -76,7 +71,6 @@ public class LoginTests {
     }
 
     @Test
-
     public void emptyEmailAndPasswordField() throws InterruptedException {
         sidePanel.clickLoginButton();
         createUserLoginPage.clearEmailField();
@@ -86,5 +80,8 @@ public class LoginTests {
         assertEquals("Authentication failed.", createUserLoginPage.getErrorMessage());
     }
 
-
+    @After
+    public void closeBrowser(){
+        driver.quit();
+    }
 }

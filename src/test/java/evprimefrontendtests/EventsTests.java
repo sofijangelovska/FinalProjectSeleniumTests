@@ -9,8 +9,6 @@ import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import pages.*;
 
-import java.time.Duration;
-
 import static junit.framework.Assert.assertEquals;
 import static util.DateBuilder.currentTime;
 import static util.DateBuilder.customDate;
@@ -26,7 +24,6 @@ public class EventsTests {
     private EventPage eventPage;
 
     @Before
-
     public void setUp() {
         options = new ChromeOptions();
         options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
@@ -42,7 +39,6 @@ public class EventsTests {
     }
 
     @Test
-
     public void createAnEventTest() throws InterruptedException {
 
         sidePanel.clickLoginButton();
@@ -136,7 +132,6 @@ public class EventsTests {
     }
 
    @After
-
     public void deleteEvent() throws InterruptedException {
         Thread.sleep(5000);
         eventPage.clickDeleteEventButton();
@@ -144,10 +139,7 @@ public class EventsTests {
         eventPage.clickDeleteButton();
         Thread.sleep(5000);
         assertEquals(0, driver.findElements(By.xpath("//*[text()='Wizz Air Marathon']")).size());
-
-
+       driver.quit();
     }
-
-
 }
 

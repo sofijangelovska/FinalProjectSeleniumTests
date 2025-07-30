@@ -14,7 +14,6 @@ public class SidePanel extends BasePage {
     private By addEventButton = By.xpath("//*[@id=\"SpeedDial-actions\"]/button");
     private By logoutButton = By.xpath("//*[@id=\"root\"]/div/div[1]/div/div/ul/li/div/div[2]/span");
 
-
     public SidePanel(WebDriver driver) {
         super(driver);
     }

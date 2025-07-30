@@ -1,5 +1,6 @@
 package evprimefrontendtests;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -31,7 +32,6 @@ public class SignupTests {
     }
 
     @Test
-
     public void invalidEmail() throws InterruptedException {
         sidePanel.clickLoginButton();
         createUserLoginPage.clickChangeStateButton();
@@ -44,7 +44,6 @@ public class SignupTests {
     }
 
     @Test
-
     public void invalidPassword() throws InterruptedException {
         sidePanel.clickLoginButton();
         createUserLoginPage.clickChangeStateButton();
@@ -54,11 +53,9 @@ public class SignupTests {
         Thread.sleep(5000);
         assertEquals("User signup failed due to validation errors.", createUserLoginPage.getErrorMessage());
         assertEquals("Invalid password. Must be at least 6 characters long.", createUserLoginPage.getErrorMessage2());
-
     }
 
     @Test
-
     public void invalidEmailAndPassword() throws InterruptedException {
         sidePanel.clickLoginButton();
         createUserLoginPage.clickChangeStateButton();
@@ -66,11 +63,11 @@ public class SignupTests {
         createUserLoginPage.insertPassword("1234");
         createUserLoginPage.clickGoButton();
         Thread.sleep(5000);
-        assertEquals("Authentication failed.", createUserLoginPage.getErrorMessage());
+        assertEquals("User signup failed due to validation errors.", createUserLoginPage.getErrorMessage());
     }
 
-    @Test
 
+    @Test
     public void emptyEmailField() throws InterruptedException {
         sidePanel.clickLoginButton();
         createUserLoginPage.clickChangeStateButton();
@@ -78,11 +75,10 @@ public class SignupTests {
         createUserLoginPage.insertPassword("123456");
         createUserLoginPage.clickGoButton();
         Thread.sleep(5000);
-        assertEquals("Authentication failed.", createUserLoginPage.getErrorMessage());
+        assertEquals("User signup failed due to validation errors.", createUserLoginPage.getErrorMessage());
     }
 
     @Test
-
     public void emptyEmailFieldAndInvalidPassword() throws InterruptedException {
         sidePanel.clickLoginButton();
         createUserLoginPage.clickChangeStateButton();
@@ -96,7 +92,6 @@ public class SignupTests {
     }
 
     @Test
-
     public void invalidEmailAndEmptyPasswordField() throws InterruptedException {
         sidePanel.clickLoginButton();
         createUserLoginPage.clickChangeStateButton();
@@ -110,7 +105,6 @@ public class SignupTests {
     }
 
     @Test
-
     public void correctEmailAndEmptyPasswordField() throws InterruptedException {
         sidePanel.clickLoginButton();
         createUserLoginPage.clickChangeStateButton();
@@ -120,12 +114,9 @@ public class SignupTests {
         Thread.sleep(5000);
         assertEquals("Invalid password. Must be at least 6 characters long.", createUserLoginPage.getErrorMessage2());
         assertEquals("User signup failed due to validation errors.", createUserLoginPage.getErrorMessage());
-
-
     }
 
     @Test
-
     public void userAlreadyExistsAndCorrectPassword() throws InterruptedException {
         sidePanel.clickLoginButton();
         createUserLoginPage.clickChangeStateButton();
@@ -139,7 +130,6 @@ public class SignupTests {
     }
 
     @Test
-
     public void userAlreadyExistsAndIncorrectPassword() throws InterruptedException {
         sidePanel.clickLoginButton();
         createUserLoginPage.clickChangeStateButton();
@@ -153,7 +143,6 @@ public class SignupTests {
     }
 
     @Test
-
     public void userAlreadyExistsAndEmptyPasswordField() throws InterruptedException {
         sidePanel.clickLoginButton();
         createUserLoginPage.clickChangeStateButton();
@@ -165,5 +154,9 @@ public class SignupTests {
         assertEquals("Invalid password. Must be at least 6 characters long.", createUserLoginPage.getErrorMessage3());
     }
 
+    @After
+    public void closeBrowser() throws InterruptedException {
+        driver.quit();
+    }
 
 }

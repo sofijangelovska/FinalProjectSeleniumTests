@@ -1,6 +1,5 @@
 package pages;
 
-import com.google.j2objc.annotations.Weak;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -26,10 +25,8 @@ public class EventsPage extends BasePage {
         return driver.findElement(eventPhoto).getDomAttribute("src");
     }
 
-
     public void clickEvent() {
         clickElement(eventPhoto);
     }
-
 
 }

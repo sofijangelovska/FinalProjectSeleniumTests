@@ -17,7 +17,6 @@ public class CreateUserLoginPage extends BasePage {
 
     public CreateUserLoginPage(WebDriver driver) {
         super(driver);
-
     }
 
     public String getTextFromTitle() {
@@ -57,7 +56,6 @@ public class CreateUserLoginPage extends BasePage {
         WebElement emailInput = driver.findElement(emailField);
         emailInput.clear();
         return this;
-
     }
 
     public CreateUserLoginPage clearPasswordField() {
@@ -65,5 +63,4 @@ public class CreateUserLoginPage extends BasePage {
         passwordInput.clear();
         return this;
     }
-
 }

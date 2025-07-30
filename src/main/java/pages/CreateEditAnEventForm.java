@@ -1,6 +1,5 @@
 package pages; //kaj nego CreationOfEvent
 
-import org.checkerframework.checker.units.qual.C;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -8,7 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 public class CreateEditAnEventForm extends BasePage {
-
 
     private By eventTitle = By.name("title");
     private By eventImage = By.name("image");
@@ -52,6 +50,4 @@ public class CreateEditAnEventForm extends BasePage {
         actions.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).sendKeys(Keys.DELETE).perform();
         insertTitle.sendKeys(title);
     }
-
-
 }

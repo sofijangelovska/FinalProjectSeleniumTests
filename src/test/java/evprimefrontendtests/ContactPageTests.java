@@ -1,5 +1,6 @@
 package evprimefrontendtests;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -18,7 +19,6 @@ public class ContactPageTests {
     private ChromeOptions options;
 
     @Before
-
     public void setUp() {
         //remove banner
         options = new ChromeOptions();
@@ -28,11 +28,9 @@ public class ContactPageTests {
         sidePanel = new SidePanel(driver);
         contactPage = new ContactPage(driver);
         contactPage.navigateTo("http://localhost:3000/");
-
     }
 
     @Test
-
     public void validateContactPage() throws InterruptedException {
 
         sidePanel.clickMenuIcon();
@@ -44,5 +42,10 @@ public class ContactPageTests {
         Thread.sleep(5000);
         assertEquals("ev@rampo.com", contactPage.getTextFromEmail());
         assertEquals("+389 75 500 000", contactPage.getTextPhoneNumber());
+    }
+
+    @After
+    public void closeBrowser(){
+        driver.quit();
     }
 }
